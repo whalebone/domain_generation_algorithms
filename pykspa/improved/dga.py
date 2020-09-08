@@ -3,7 +3,7 @@ import argparse
 from datetime import datetime
 import time
 import struct
-from md6 import md6hash
+from .md6 import md6hash
 
 
 def hash(nr):
