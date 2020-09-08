@@ -8,6 +8,11 @@ def dga(d, day_index, tld_index):
     ds = d.strftime("%d%m%Y")
     return base64.b64encode(ds).lower().replace("=","a") + tlds[tld_index]
 
+def generate_domains(nr_domains: int= 40):
+    for i in range(nr_domains):
+        print(dga(d, i%10, i//10))
+
+
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--date", help="date for which to generate domains")

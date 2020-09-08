@@ -29,7 +29,7 @@ def dga(seed, nr_domains = 5000):
         sld = get_sld(domain_length, r)
         tld = tlds[r % 6]
         domain = "{}.{}".format(sld, tld)
-        print(domain)
+        yield domain
 
 
 def generate_domains(date, nr):
@@ -39,9 +39,9 @@ def generate_domains(date, nr):
     for i in range(2):
         ts = (seed+i)*2*24*3600
         date_range.append(datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M"))
-    t = "pykspa domains valid through {} - {}".format(*date_range)
-    print("{}\n{}".format(t, "*"*len(t)))
-    dga(seed, nr)
+    # t = "pykspa domains valid through {} - {}".format(*date_range)
+    # print("{}\n{}".format(t, "*"*len(t)))
+    yield from dga(seed, nr)
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()

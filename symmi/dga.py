@@ -31,12 +31,13 @@ def next_domain(r, second_and_top_lvl, third_lvl_domain_len):
 
     return domain + second_and_top_lvl
 
-def dga(seed, second_and_top_lvl, nr):
-    r = Rand(seed)
+def dga(date, second_and_top_lvl, nr):
+
+    r = Rand(create_seed(date))
     for i in range(nr):
         span = third_lvl_max_len - third_lvl_min_len + 1
         third_lvl_len = third_lvl_min_len + r.rand() % span
-        print(next_domain(r, second_and_top_lvl, third_lvl_len))
+        yield next_domain(r, second_and_top_lvl, third_lvl_len)
 
 def create_seed(date):
     return 10000*(date.day//days_period*100 + date.month) + date.year + seed_const

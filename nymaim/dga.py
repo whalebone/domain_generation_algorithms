@@ -32,28 +32,27 @@ class PRNG:
         nr = (((c + t[3]) & 0xFFFFFFFF)//100) % m
         return nr
 
-def dga(date, nr):
-    r = PRNG(date) 
+def dga(date):
+    r = PRNG(date)
 
-    for i in range(nr):
-        length = r.rand(6) + 6
-        domain = ""
-        for l in range(length):
-            domain += chr(ord('a') + (r.rand(26) % 26))
+    length = r.rand(6) + 6
+    domain = ""
+    for l in range(length):
+        domain += chr(ord('a') + (r.rand(26) % 26))
 
-        t = ord(domain[-2]) - ord('a') 
-        if t < 9: 
-            domain += '.com'
-        elif t < 13:
-            domain += '.org'
-        elif t < 17:
-            domain += '.biz'
-        elif t < 21:
-            domain += '.net'
-        else:
-            domain += '.info'
+    t = ord(domain[-2]) - ord('a')
+    if t < 9:
+        domain += '.com'
+    elif t < 13:
+        domain += '.org'
+    elif t < 17:
+        domain += '.biz'
+    elif t < 21:
+        domain += '.net'
+    else:
+        domain += '.info'
 
-        print(domain)
+    return domain
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
@@ -64,6 +63,6 @@ if __name__=="__main__":
     if date_str:
         date = datetime.strptime(date_str, "%Y-%m-%d")
     else:
-        date = datetime.now() 
-
-    dga(date, args.nr)
+        date = datetime.now()
+    for i in range(args.nr):
+        print(dga(date))

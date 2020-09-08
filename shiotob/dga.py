@@ -45,6 +45,11 @@ def get_next_domain(domain):
 
     return domain
 
+
+def dga(nr_domains):
+    for i in range(nr_domains):
+        yield get_next_domain(domain)
+
 if __name__=="__main__":
     """ example seed domain: 4ypv1eehphg3a.com """
     parser = argparse.ArgumentParser(description="DGA of Shiotob")

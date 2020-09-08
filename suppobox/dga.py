@@ -42,8 +42,9 @@ def generate_domains(time_, word_list):
         first_word = words[first_word_index]
         second_word = words[second_word_index]
         tld = ".net"
-        print("{}{}{}".format(first_word, second_word, tld))
         seed += 1
+        yield "{}{}{}".format(first_word, second_word, tld)
+
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()

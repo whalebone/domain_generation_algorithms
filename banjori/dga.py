@@ -9,8 +9,8 @@ def next_domain(domain):
     dl[3] = map_to_lowercase_letter(dl[1] + dl[2] + dl[3])
     return ''.join([chr(x) for x in dl])
 
-seed = 'earnestnessbiophysicalohax.com' # 15372 equal to 0 (seed = 0)
-domain = seed
-for i in range(1000):
-    print(domain)
-    domain = next_domain(domain)
+def dga():
+	seed = 'earnestnessbiophysicalohax.com' # 15372 equal to 0 (seed = 0)
+	domain = seed
+	for i in range(1000):
+	    yield next_domain(domain)

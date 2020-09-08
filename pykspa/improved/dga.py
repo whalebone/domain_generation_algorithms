@@ -148,8 +148,8 @@ def generate_domains(date, nr, set_nr):
         top_level_domain = tlds[(seed & 3)]
 
         # concatenate and print domain
-        domain = second_level_domain + '.' + top_level_domain
-        print(domain)
+        yield second_level_domain + '.' + top_level_domain
+        # print(domain)
 
 
 if __name__ == "__main__":

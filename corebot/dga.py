@@ -21,6 +21,12 @@ def generate_domain(charset, r):
     print(domain)
     return r
 
+def dga(timestamp):
+    charset, r = init_rand_and_chars(timestamp.year, timestamp.month, timestamp.day, 1, 
+            int(args.seed, 16)) 
+    for _ in range(40):
+        yield generate_domain(charset, r)
+
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--seed", help="seed", default="1DBA8930")

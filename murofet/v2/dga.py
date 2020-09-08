@@ -39,7 +39,7 @@ def dga(date, key):
                 break
 
 
-        print(domain)
+        return domain
 
 if __name__=="__main__":
     # known keys:

@@ -46,7 +46,7 @@ def dga(date):
             if not index % m: 
                 domain += tld
                 break
-        print(domain)
+        return domain
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()

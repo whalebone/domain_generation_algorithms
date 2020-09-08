@@ -47,9 +47,10 @@ def pcg_random(r):
     data[12:16] = to_little_array(d)
     return step3 & 0xFFFFFFFFFFFFFFFF, data
 
-def dga(year, month, day, seed):
+def dga(timestamp, seed):
+    year, month, day = timestamp.year, timestamp.month, timestamp.day
     x = (day*month*year) ^ seed
-    tld_index = day
+    tld_index = timestamp.day
     for _ in range(40):
         random = 32*[None]
         x, random[0:16] = pcg_random(x)
@@ -75,5 +76,5 @@ if __name__=="__main__":
         d = datetime.strptime(args.date, "%Y-%m-%d")
     else:
         d = datetime.now()
-    for domain in dga(d.year, d.month, d.day, int(args.seed, 16)):
+    for domain in dga(d, int(args.seed, 16)):
         print(domain)

@@ -85,5 +85,5 @@ if __name__=="__main__":
             d = d - timedelta(days=1)
     else:
         for seq_nr in range(nr_of_domains):
-            domain = create_domain(seq_nr, d)
+            domain = create_domain(d)
             print(domain)

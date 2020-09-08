@@ -74,6 +74,20 @@ def randint(mersenne, nr):
     x = mersenne.extract_number()
     return (nr*x) >> 32
 
+
+def dga():
+    charset = "iHRYg79zJXaGw1CF5K0d3vZobhAlx6StUBnjOIMpe2yVuPr4sL8DqmQTkEcWNf"
+    seed = random.randint(0, 1000*3600*24)
+    mersenne = Mersenne(seed)
+    for nr in range(100):
+        domain = ""
+        for i in range(10):
+            c = charset[randint(mersenne, len(charset))]
+            domain += c
+        domain += ".com"
+        yield domain
+
+
 charset = "iHRYg79zJXaGw1CF5K0d3vZobhAlx6StUBnjOIMpe2yVuPr4sL8DqmQTkEcWNf"
 seed = random.randint(0, 1000*3600*24) 
 

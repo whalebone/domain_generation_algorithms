@@ -8,6 +8,7 @@ def rand(r, seed):
     return  (seed - 1043968403*r) & 0x7FFFFFFF
 
 def dga(date, seed):
+    seed = int(seed, 16)
     charset = string.ascii_lowercase + string.digits
     if seed in [0xE1F2, 0xE1F1, 0xE1F5]:
         tlds = [".com", ".org", ".net"]
@@ -48,4 +49,4 @@ if __name__ == "__main__":
         seeds = [args.seed]
 
     for seed in seeds:
-        dga(d, int(seed, 16))
+        dga(d, seed)

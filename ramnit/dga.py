@@ -12,6 +12,7 @@ class RandInt:
         return ix % modulus 
 
 def get_domains(seed, nr, tlds):
+    seed = int(seed, 16)
     if not tlds:
         tlds = [".com"]
 
@@ -75,5 +76,5 @@ if __name__=="__main__":
     tlds = None
     if args.tlds:
         tlds = [x.strip() for x in args.tlds.split(" ")]
-    for domain in get_domains(int(args.seed, 16), args.nr, tlds):
+    for domain in get_domains(args.seed, args.nr, tlds):
         print(domain)

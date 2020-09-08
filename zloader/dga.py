@@ -52,7 +52,8 @@ def seeding(d, key):
     return seed
 
 
-def dga(seed, nr_of_domains):
+def dga(date, rc4, nr_of_domains):
+    seed = seeding(d, rc4)
     r = seed
     for i in range(nr_of_domains):
         domain = ""

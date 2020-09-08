@@ -37,7 +37,7 @@ def dga(date):
             for s in ['firstword', 'separator', 'secondword', 'tld']:
                 ss = wt[s]
                 domain += ss[r.getval() % len(ss)]
-            print(domain)
+            yield domain
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()

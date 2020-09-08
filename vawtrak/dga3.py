@@ -9,6 +9,8 @@ def prng(r):
     return r 
 
 def dga(seed, nr_domains):
+    if type(seed) == str:
+        seed = int(args.seed, 16)
     consonants = "cdfghlmnrstw"
     vowels = "aeiou"
     r = c_int(seed)
@@ -31,7 +33,7 @@ def dga(seed, nr_domains):
                 p = r.value % 2 + 1
             domain += wordlist[tmp % len(wordlist)] 
         domain += ".com"
-        print(domain)
+        yield domain
 
 
 if __name__=="__main__":

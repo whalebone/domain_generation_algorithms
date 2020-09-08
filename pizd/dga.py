@@ -10,6 +10,8 @@ def pizd(time,nb):
  :param nb: Number of domain name to generate, default (as seen in DGA) is 85
  :return: a nb-long list of domain names
  """
+ time -= datetime.utcfromtimestamp(0)
+ time = int(time.total_seconds()*1000)
  wordlist = ['above',
      'action',
      'advance',
@@ -423,6 +425,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     d = datetime.strptime(args.date, "%Y-%m-%d") if args.date else datetime.now()
-    d -= datetime.utcfromtimestamp(0)
-    for domain in pizd(int(d.total_seconds()*1000),args.nr):
+    for domain in pizd(d,args.nr):
         print(domain)
